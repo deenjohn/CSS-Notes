@@ -1,0 +1,88 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  <style>
+      
+.product {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 0;
+    box-shadow: none;
+    width: 50%;
+    margin: 0 auto; //center the product
+}
+
+//.hover
+// opacity: 0;
+
+.product .hover {
+    display: block;
+    position: absolute;
+    font-family: AvenirNextLTPro-Regular,Arial,Helvetica;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: .1875rem;
+    transition: opacity .45s cubic-bezier(.25,.46,.45,.94), margin-top .45s cubic-bezier(.25,.46,.45,.94);
+    pointer-events: none;
+    opacity: 0;
+    color: red;
+    text-decoration: none;
+    text-align: center;
+    /* width: 100%; */
+    font-size: .6rem;
+    line-height: 16px; 
+
+}
+
+.product .hover strong {
+    display: block;
+    position: relative;
+    width: 100%;
+    font-family: AvenirNextLTPro-Demi,Arial,Helvetica;
+    text-transform: uppercase;
+    font-weight: 800;
+    /* background-color: aqua; */
+    letter-spacing: .1875rem;
+}
+
+/* on hover ,  opacity: 1 , for .hover */
+
+.product img:hover~.hover {
+  
+  /* animation from non-hover to hover state */
+    transition: 
+      opacity .6s cubic-bezier(.25,.46,.45,.94) .15s,
+      margin-top .6s cubic-bezier(.25,.46,.45,.94) .15s ;
+    margin-top: -93px;
+    opacity: 1 ;
+    color: red; 
+    left: 2%;
+}
+    </style>
+
+
+</head>
+
+<body translate="no" >
+
+  <div class="product">
+  <img src="https://images.freeimages.com/images/small-previews/c53/yellowstone-river-1361768.jpg">
+        <span class="hover">
+          <strong>Yellow Stone</strong>
+					 River
+			  </span>				  
+		</div>
+
+</body>
+
+</html>
+ 
