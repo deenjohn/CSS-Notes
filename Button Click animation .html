@@ -1,0 +1,140 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+  <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+  <title>CodePen - Button Click Animation</title>
+ 
+   <style>
+      
+/* moveInBottom : button comes from down to up animation */
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative; /* position: relative; */
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  margin : 5% ;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+/* create a button after ,  that is contained inside btn.
+Use it for animation effect .
+Give it absolute position,relative to btn 
+*/
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+  /* 1rem is y down direction shadow ,2rem is left-right shaddow ,rgba(0, 0, 0, 0.2) gives slightly black shadow  */
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn:active,
+.btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards;
+}
+
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn--white::after {
+  background-color: #fff;
+}
+
+/* */
+
+p {
+  margin-top : 20px ;
+  width : 50% ;
+  padding : 10px;
+}
+
+    </style>
+ 
+
+</head>
+
+<body translate="no" >
+
+  
+<a href="#section-tours" class="btn btn--white btn--animated">
+  Discover our tours
+</a>
+
+<p>Styles Computed on hover button :</p>
+<p id ="output"> </p>
+
+    <script >
+      
+ var test = document.querySelector(".btn");
+
+ test.addEventListener("mouseenter", getTheStyle);
+
+ function getTheStyle(){
+    var elem = test ;
+    var theCSSprop =      window.getComputedStyle(elem,null).getPropertyValue("opacity");
+ var output = document.getElementById("output");
+ output.innerText = JSON.stringify({"opacity" : theCSSprop || 'nothing' });
+ output.style.background = 'gold' ;
+ }
+    </script>
+
+</body>
+
+</html>
+ 
